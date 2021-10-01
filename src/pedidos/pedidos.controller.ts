@@ -1,9 +1,9 @@
 import { Controller, Get } from '@nestjs/common';
+import { Service } from './service';
 
 @Controller('pedidos')
 export class PedidosController {
-    @Get()
-    getPedido(){
-        return "Pedidos";
+    constructor(private PedigosService:Service){
+
     }
 }
