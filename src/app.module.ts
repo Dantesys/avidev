@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { PedidoModule } from './pedido/pedido.module';
-import { ProducaoModule } from './producao/producao.module';
-import { EscalaModule } from './escala/escala.module';
-import { UsuarioModule } from './usuario/usuario.module';
+import { PedidosModule } from './pedidos/pedidos.module';
+import { EscalasModule } from './escalas/escalas.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
+import { ProducoesModule } from './producoes/producoes.module';
 
 @Module({
-  imports: [PedidoModule, ProducaoModule, EscalaModule, UsuarioModule],
+  imports: [PedidosModule, EscalasModule, UsuariosModule, ProducoesModule],
   controllers: [],
   providers: [],
 })
