@@ -14,10 +14,10 @@ export class AuthService {
         private jwtService: JwtService
     ){}
     async cadastro(criarDTO:CriarDTO){
-        return this.usersRepository.createUser(criarDTO);
+        return await this.usersRepository.createUser(criarDTO);
     }
     async edit(changeDTO:ChangeDTO,user:User){
-        return this.usersRepository.changeUser(changeDTO,user);
+        return await this.usersRepository.changeUser(changeDTO,user);
     }
     async login(loginDTO:LoginDTO) : Promise<{accessToken: string}>{
         const {email,senha} = loginDTO;

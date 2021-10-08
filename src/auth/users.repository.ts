@@ -12,7 +12,7 @@ export class UsersRepository extends Repository<User>{
             const salt = await bcrypt.genSalt();
             const hash = await bcrypt.hash(senha,salt);
             const user = this.create({nome,senha:hash,email,tp,endereco});
-            await this.save(user)
+            return await this.save(user)
         } catch (error) {
             if(error.code=='23050'){
                 throw new ConflictException('Usuario já existente')
@@ -35,7 +35,7 @@ export class UsersRepository extends Repository<User>{
             if(endereco){
                 user.endereco = endereco
             }
-            await this.save(user)
+            return await this.save(user)
         } catch (error) {
             if(error.code=='23050'){
                 throw new ConflictException('Usuario já existente')

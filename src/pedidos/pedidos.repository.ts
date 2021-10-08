@@ -14,7 +14,7 @@ export class PedidosRepository extends Repository<Pedido>{
             const numero:number =+ n;
             const estado:number = 0;
             const pedido = this.create({numero,descricao,estado,user});
-            await this.save(pedido)
+            return await this.save(pedido)
         } catch (error) {
             if(error.code=='23050'){
                 throw new ConflictException('Pedido já existente')
