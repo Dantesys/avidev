@@ -18,7 +18,7 @@ export class ProducaoController {
             throw new UnauthorizedException(`${user.nome} não tem permissão para adicionar na escala`);
         }
     }
-    @Get("/strat/:id")
+    @Get("/start/:id")
     async producao(@Param() param, @getUser() user:User){
         if(user.tp==2 || user.tp==1){
             return await this.producaoService.producao(param.id);
