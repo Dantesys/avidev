@@ -18,11 +18,11 @@ A seguir as rotas, metodos e o nivel de acesso que precisa ter:
 - GUEST - POST - /auth/login - return accessToken
 - GERENTE - POST - /auth/funcionario/cadastro - return User
 - AUTHS - POST - /auth/edit - return User
-- GERENTE - POST - /auth/funcionario/del/:id - return User
+- GERENTE - DELETE - /auth/funcionario/del/:id - return User
 - REVENDA - POST - /pedidos/fazer - return Success
 - REVENDA - GET - /pedidos/list - return Pedido[]
 - FUNCIONARIO - GET - /pedidos/analisar/:id - return Pedido
-- FUNCIONARIO - POST - /pedidos/analisar/:id/fim - return Success
+- FUNCIONARIO - PUT - /pedidos/analisar/:id/fim - return Success
 - FUNCIONARIO - GET - /pedidos/list - return Pedido[]
 - FUNCIONARIO - GET - /producao/list - return Pedido[]
 - REVENDA - GET - /producao/list - return Pedido[]

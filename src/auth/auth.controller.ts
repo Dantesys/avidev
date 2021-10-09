@@ -1,6 +1,6 @@
 import { User } from './user.entity';
 import { LoginDTO } from './dtos/loginDTO';
-import { Body, Controller, Post, UseGuards, UnauthorizedException, Param } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards, UnauthorizedException, Param, Delete } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CriarDTO } from './dtos/criarDTO'
 import { AuthGuard } from '@nestjs/passport';
@@ -33,7 +33,7 @@ export class AuthController {
     async edit(@Body() changeDTO:ChangeDTO,@getUser() user:User){
         return await this.authService.edit(changeDTO,user);
     }
-    @Post("/funcionario/del/:id")
+    @Delete("/funcionario/del/:id")
     @UseGuards(AuthGuard('jwt'))
     async delUser(@Param() param, @getUser() user:User){
         return await this.authService.delUser(param.id,user);
