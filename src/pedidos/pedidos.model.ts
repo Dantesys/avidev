@@ -9,6 +9,8 @@ export class Pedido {
     @Column()
     descricao: string
     @Column()
+    preco: number
+    @Column()
     estado: number
     /*
         0-Enviado para fabrica

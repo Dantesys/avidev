@@ -10,7 +10,7 @@ export class ProducaoRepository extends Repository<Pedido>{
         if(p.estado==2){
             p.estado=3;
             await this.save(p)
-            return p;
+            return {success: true};
         }else{
             throw new ConflictException("Pedido já entrou em producao");
         }
@@ -20,7 +20,7 @@ export class ProducaoRepository extends Repository<Pedido>{
         if(p.estado==3){
             p.estado=4;
             await this.save(p)
-            return p;
+            return {success: true};
         }else{
             throw new ConflictException("Pedido já saiu da producao");
         }

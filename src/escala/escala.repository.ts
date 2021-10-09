@@ -16,7 +16,7 @@ export class EscalaRepository extends Repository<Pedido>{
         if(p.estado==4){
             p.estado=5;
             await this.save(p)
-            return p;
+            return {success: true};
         }else{
             throw new ConflictException("Pedido já entrou na escala de entrega");
         }
@@ -26,7 +26,7 @@ export class EscalaRepository extends Repository<Pedido>{
         if(p.estado==5){
             p.estado=4;
             await this.save(p)
-            return p;
+            return {success: true};
         }else{
             throw new ConflictException("Pedido não está escala de entrega");
         }
