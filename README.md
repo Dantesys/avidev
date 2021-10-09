@@ -1,5 +1,5 @@
 # AViDev
-## _Sistema de ementa de produtos das revenderoras_
+## _Sistema de ementa de produtos das revendedoras_
 
 AViDev é um sistema back-end para controle dos pedidos feitos pelas revendedoras.
 
