@@ -21,7 +21,7 @@ export class ProducaoController {
     @Get("/start/:id")
     async producao(@Param() param, @getUser() user:User){
         if(user.tp==2 || user.tp==1){
-            return await this.producaoService.producao(param.id);
+            return await this.producaoService.producao(param.id,user);
         }else{
             throw new UnauthorizedException(`${user.nome} não tem permissão para enviar para producao`);
         }
@@ -29,7 +29,7 @@ export class ProducaoController {
     @Get("/stop/:id")
     async endproducao(@Param() param, @getUser() user:User){
         if(user.tp==2 || user.tp==1){
-            return await this.producaoService.endproducao(param.id);
+            return await this.producaoService.endproducao(param.id,user);
         }else{
             throw new UnauthorizedException(`${user.nome} não tem permissão para retirar da producao`);
         }

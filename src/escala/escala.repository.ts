@@ -11,24 +11,27 @@ export class EscalaRepository extends Repository<Pedido>{
     async listAdm(){
         return await this.find({estado:5});
     }
-    async add(id:number){
+    async add(id:number,user:User){
         let p:Pedido = await this.findOne({id});
         if(p.estado==4){
             p.estado=5;
+            p.escala=user;
+            p.dti_escala=new Date();
             await this.save(p)
             return {success: true};
         }else{
-            throw new ConflictException("Pedido já entrou na escala de entrega");
+            throw new ConflictException("Pedido não pode entrar escala de entrega");
         }
     }
     async del(id:number){
         let p:Pedido = await this.findOne({id});
         if(p.estado==5){
             p.estado=4;
+            p.dtf_escala=new Date();
             await this.save(p)
             return {success: true};
         }else{
-            throw new ConflictException("Pedido não está escala de entrega");
+            throw new ConflictException("Pedido não sair da escala de entrega");
         }
     }
 }

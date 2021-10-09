@@ -30,4 +30,16 @@ export class Pedido {
     dti_analise: Date
     @Column({nullable:true})
     dtf_analise: Date
+    @ManyToOne(() => User, user => user.pedidos, {eager: true})
+    producao: User
+    @Column({nullable:true})
+    dti_producao: Date
+    @Column({nullable:true})
+    dtf_producao: Date
+    @ManyToOne(() => User, user => user.pedidos, {eager: true})
+    escala: User
+    @Column({nullable:true})
+    dti_escala: Date
+    @Column({nullable:true})
+    dtf_escala: Date
 }

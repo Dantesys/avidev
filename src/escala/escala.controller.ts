@@ -21,7 +21,7 @@ export class EscalaController {
     @Get("/add/:id")
     async add(@Param() param, @getUser() user:User){
         if(user.tp==2 || user.tp==1){
-            return await this.escalaService.add(param.id);
+            return await this.escalaService.add(param.id,user);
         }else{
             throw new UnauthorizedException(`${user.nome} não tem permissão para adicionar na escala`);
         }
@@ -29,7 +29,7 @@ export class EscalaController {
     @Get("/del/:id")
     async del(@Param() param, @getUser() user:User){
         if(user.tp==2 || user.tp==1){
-            return await this.escalaService.del(param.id);
+            return await this.escalaService.del(param.id,user);
         }else{
             throw new UnauthorizedException(`${user.nome} não tem permissão para remover da escala`);
         }
