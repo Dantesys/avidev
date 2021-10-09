@@ -1,6 +1,6 @@
 import { CriarDTO } from './dtos/criarDTO';
 import { UsersRepository } from './users.repository';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { LoginDTO } from './dtos/loginDTO';
 import * as bcrypt from 'bcrypt';
@@ -8,11 +8,24 @@ import { JwtService } from '@nestjs/jwt';
 import { ChangeDTO } from './dtos/changeDTO';
 import { User } from './user.entity';
 @Injectable()
-export class AuthService {
+export class AuthService implements OnModuleInit{
     constructor(
         @InjectRepository(UsersRepository) private usersRepository: UsersRepository,
         private jwtService: JwtService
     ){}
+    async onModuleInit(){
+        const gerente = await this.usersRepository.findOne({email:"gerente@avidev.com"});
+        if(!gerente){
+            const criarDTO = {
+                nome: "Gerente",
+                senha: "G3r3nc1a@",
+                email: "gerente@avidev.com",
+                tp: 3,
+                endereco: {}
+            }
+            await this.usersRepository.createUser(criarDTO);
+        }
+    }
     async cadastro(criarDTO:CriarDTO){
         return await this.usersRepository.createUser(criarDTO);
     }

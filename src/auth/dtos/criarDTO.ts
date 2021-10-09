@@ -1,4 +1,4 @@
-import { IsEmail, IsInt, IsNotEmpty, IsObject, IsString, MinLength } from "class-validator"
+import { IsEmail, IsInt, IsNotEmpty, IsObject, IsString, Matches, MinLength } from "class-validator"
 
 export class CriarDTO {
     @IsNotEmpty()
@@ -9,6 +9,7 @@ export class CriarDTO {
     })
     @IsNotEmpty()
     @IsString()
+    @Matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, {message: 'Senha é fraca, deve conter pelo menos:\n1 - Letra maiuscula\n1 - Letra minuscula\n1 - Numero\n1 - Caractere especial\nTer pelo menos 8 caracteres'})
     senha: string
     @IsNotEmpty()
     @IsString()

@@ -13,9 +13,6 @@ export class PedidosService {
     async list(user:User){
         return await this.pedrepo.find({user});
     }
-    async listpd(){
-        return await this.pedrepo.find({estado:3});
-    }
     async listAdm(user:User){
         return await this.pedrepo.find();
     }
@@ -27,12 +24,6 @@ export class PedidosService {
     }
     async delescala(id:number){
         return await this.pedrepo.delescala(id);
-    }
-    async producao(id:number){
-        return await this.pedrepo.producao(id);
-    }
-    async endproducao(id:number){
-        return await this.pedrepo.endproducao(id);
     }
     async analisado(id:number,user:User){
         const pedido:Pedido = await this.pedrepo.findOne({id});

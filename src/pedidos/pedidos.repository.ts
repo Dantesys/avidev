@@ -55,16 +55,6 @@ export class PedidosRepository extends Repository<Pedido>{
             throw new UnauthorizedException("Pedido não está escala de entrega");
         }
     }
-    async producao(id:number){
-        let p:Pedido = await this.findOne({id});
-        if(p.estado==2){
-            p.estado=3;
-            await this.save(p)
-            return p;
-        }else{
-            throw new UnauthorizedException("Pedido já entrou em producao");
-        }
-    }
     async endproducao(id:number){
         let p:Pedido = await this.findOne({id});
         if(p.estado==3){
