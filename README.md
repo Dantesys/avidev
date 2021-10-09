@@ -19,16 +19,16 @@ A seguir as rotas, metodos e o nivel de acesso que precisa ter:
 - GERENTE - POST - /auth/funcionario/cadastro - return User
 - AUTHS - POST - /auth/edit - return User
 - GERENTE - POST - /auth/del/:id - return User
-- REVENDA - POST - /pedidos/fazer - return Pedido
+- REVENDA - POST - /pedidos/fazer - return Success
 - REVENDA - GET - /pedidos/list - return Pedido[]
 - FUNCIONARIO - GET - /pedidos/analisar/:id - return Pedido
-- FUNCIONARIO - GET - /pedidos/analisar/:id/fim - return Pedido
+- FUNCIONARIO - POST - /pedidos/analisar/:id/fim - return Success
 - FUNCIONARIO - GET - /pedidos/list - return Pedido[]
 - FUNCIONARIO - GET - /producao/list - return Pedido[]
 - REVENDA - GET - /producao/list - return Pedido[]
-- FUNCIONARIO - GET - /prducao/start/:id - return Pedido
-- FUNCIONARIO - GET - /prducao/stop/:id- return Pedido
+- FUNCIONARIO - GET - /prducao/start/:id - return Success
+- FUNCIONARIO - GET - /prducao/stop/:id- return Success
 - FUNCIONARIO - GET - /escala/list - return Pedido[]
 - REVENDA - GET - /escala/list - return Pedido[]
-- FUNCIONARIO - GET - /escala/add/:id - return Pedido
-- FUNCIONARIO - GET - /escala/del/:id - return Pedido
+- FUNCIONARIO - GET - /escala/add/:id - return Success
+- FUNCIONARIO - GET - /escala/del/:id - return Success
