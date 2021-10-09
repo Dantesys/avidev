@@ -33,7 +33,7 @@ export class AuthController {
     async edit(@Body() changeDTO:ChangeDTO,@getUser() user:User){
         return await this.authService.edit(changeDTO,user);
     }
-    @Post("/del/:id")
+    @Post("/funcionario/del/:id")
     @UseGuards(AuthGuard('jwt'))
     async delUser(@Param() param, @getUser() user:User){
         return await this.authService.delUser(param.id,user);
