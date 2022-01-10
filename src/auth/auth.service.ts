@@ -32,13 +32,13 @@ export class AuthService implements OnModuleInit{
     async edit(changeDTO:ChangeDTO,user:User){
         return await this.usersRepository.changeUser(changeDTO,user);
     }
-    async login(loginDTO:LoginDTO) : Promise<{accessToken: string}>{
+    async login(loginDTO:LoginDTO) : Promise<{accessToken: string,user:User}>{
         const {email,senha} = loginDTO;
         const user = await this.usersRepository.findOne({email});
         if(user && (await bcrypt.compare(senha,user.senha))){
             const payload = {email};
             const accessToken: string = this.jwtService.sign(payload);
-            return {accessToken};
+            return {accessToken,user};
         }else{
             throw new UnauthorizedException("Não autorizado");
         }

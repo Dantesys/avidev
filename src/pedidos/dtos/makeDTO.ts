@@ -4,4 +4,6 @@ export class MakeDTO {
     @IsNotEmpty()
     @IsString()
     descricao: string
+    @IsObject()
+    projeto: object
 }

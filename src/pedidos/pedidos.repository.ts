@@ -9,14 +9,15 @@ import { AnalizarDTO } from './dtos/analizarDTO';
 export class PedidosRepository extends Repository<Pedido>{
     async makePedido(makeDTO:MakeDTO,user:User){
         try {
-            const {descricao} = makeDTO;
+            const {descricao,projeto} = makeDTO;
             let d:Date = new Date();
             let n:string = ""+d.getFullYear()+d.getMonth()+d.getDay()+d.getMilliseconds();
             const numero:number =+ n;
             const estado:number = 0;
-            const pedido = this.create({numero,descricao,estado,user});
+            const preco:number = 0;
+            const pedido = this.create({numero,descricao,estado,user,preco,projeto});
             await this.save(pedido);
-            return {success: true};
+            return {pedido: pedido};
         } catch (error) {
             if(error.code=='23050'){
                 throw new ConflictException('Pedido já existente')

@@ -10,8 +10,8 @@ import { EscalaModule } from './escala/escala.module';
       type: "postgres",
       host: "localhost",
       port: 5432,
-      username: "postgres",
-      password: "postgres",
+      username: "dantesys",
+      password: "diegohotuios",
       database: "avdb",
       autoLoadEntities: true,
       synchronize: true

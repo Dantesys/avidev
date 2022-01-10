@@ -8,6 +8,8 @@ export class Pedido {
     numero: number
     @Column()
     descricao: string
+    @Column({type:"json"})
+    projeto: object
     @Column()
     preco: number
     @Column()
